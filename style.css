@@ -4,5 +4,21 @@ body
 }
 .main_body
 {
- 
+  border-color: red;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+}
+.screen
+{
+    flex: 2 1 auto;
+    border-color: blue;
+
+}
+.buttons
+{
+    display: flex;
+    
 }
