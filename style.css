@@ -16,10 +16,13 @@ body
    
 }
 .screen
-{
+{  
+    text-align: center;
+    height: 20px;
+    width: 400px;
     flex: 2 1 auto;
-    border-color: red;
-
+    border-color: blue;
+    color: red;
 }
 .buttons
 {  
@@ -33,4 +36,9 @@ body
 {
     width: 70px;
     height: 70px;
+    color: red;
+    background-color: black;
+     /* text-decoration-thickness: 50%; */
+    border-color: blue;
+
 }
