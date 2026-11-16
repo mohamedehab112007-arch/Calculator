@@ -4,21 +4,33 @@ body
 }
 .main_body
 {
+    width: 400px;
+    flex-basis: 150;
   border-color: red;
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items: center;
+   justify-self: center;
+   padding: 120px;
+   flex-wrap: wrap;
    
 }
 .screen
 {
     flex: 2 1 auto;
-    border-color: blue;
+    border-color: red;
 
 }
 .buttons
-{
+{  
+    padding: 12px;
+    column-gap: 15px;
+    row-gap: 30px;
     display: flex;
-    
+     flex-wrap: wrap;
+}
+.number
+{
+    width: 70px;
+    height: 70px;
 }
