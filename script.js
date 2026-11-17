@@ -56,16 +56,38 @@ function update_number()
         num1=value;
       }
     }
+    function append_num(element)
+    {
+      let text=screen.textContent+element.textContent;
+          screen.textContent=text;
+    }
    let number_buttons=document.querySelectorAll("#num");
    let number_array=Array.from(number_buttons);
     number_array.forEach(function(element,index,array)
     {
        element.addEventListener("click",function(){
-         let text=screen.textContent+element.textContent;
-          screen.textContent=text;
+         append_num(element);
         });
     });
-     
+     let operators=document.querySelectorAll("#operator");
+     let operator_array=Array.from(operators);
+      operator_array.forEach(function(element,index,array)
+       {
+          element.addEventListener("click",function()
+          {
+          
+            num1=Number(screen.textContent);
+            operator=element.textContent;
+            screen.textContent="";
+          
+         })
+       });
+       let equal=document.querySelector("#equal");
+       equal.addEventListener("click",function()
+       {
+          num2=screen.textContent;
+          screen.textContent=operate(num1,operator,num2);
+       });
     
 
 }
