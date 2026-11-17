@@ -42,3 +42,31 @@ function operate(number1,operatant,number2)
    return divide(number1,number2);
   }
 }
+function update_number()
+{
+    let screen =document.querySelector(".screen");
+    let whichNumberIsEmpty=new function(value)
+    {
+      if(num1!==null || num1!==undefined)
+      {
+        num2=value;
+      }
+      else
+      {
+        num1=value;
+      }
+    }
+   let number_buttons=document.querySelectorAll("#num");
+   let number_array=Array.from(number_buttons);
+    number_array.forEach(function(element,index,array)
+    {
+       element.addEventListener("click",function(){
+         let text=screen.textContent+element.textContent;
+          screen.textContent=text;
+        });
+    });
+     
+    
+
+}
+update_number();
