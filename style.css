@@ -1,6 +1,6 @@
 body
 {
-  background-color: black;
+  background-color: #1417BD;
 }
 .main_body
 {
@@ -8,21 +8,26 @@ body
     flex-basis: 150;
   border-color: red;
    display: flex;
+       
    flex-direction: column;
    justify-content: center;
    justify-self: center;
-   padding: 120px;
-   flex-wrap: wrap;
+   padding: 75px;
+   background-color:#146BBD;
+   height: 400px;
+   border-radius: 12px;
    
 }
 .screen
 {  
     text-align: center;
-    height: 20px;
-    width: 400px;
+    height: 75px;
+    width: 350px;
     flex: 2 1 auto;
-    border-color: blue;
-    color: red;
+    border-color: blue; /* bug in here*/
+    background-color: #F3FF05;
+    color: blue;
+    border-radius: 12px;
 }
 .buttons
 {  
@@ -36,9 +41,9 @@ body
 {
     width: 70px;
     height: 70px;
-    color: red;
+    color: white;
     background-color: black;
      /* text-decoration-thickness: 50%; */
-    border-color: blue;
+    border-color:red;
 
 }
