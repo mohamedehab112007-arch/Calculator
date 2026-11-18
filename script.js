@@ -62,14 +62,19 @@ function appendEventListenersToOperator(screen,signs_array)
 {
     signs_array.forEach(function(element,index,array)
        {
+        
           element.addEventListener("click",function()
           {
-          
+            if(operator!==null && operator!==undefined)
+           {
+            num2=Number(screen.textContent);
+            screen.textContent=operate(num1,operator,num2);
+            operator=element.textContent;
+           }
             num1=Number(screen.textContent);
             operator=element.textContent;
             screen.textContent="";
-          
-         })
+          })
        });
 }
 function appendEventListenersToEqualButton(screen,equal_button)
@@ -78,9 +83,23 @@ function appendEventListenersToEqualButton(screen,equal_button)
        {
           num2=Number(screen.textContent);
           screen.textContent=operate(num1,operator,num2);
+          num2=null;
+          num1=null;
+          operator=null;
        });
 }
-
+function appendEventListenersToClear(screen)
+{
+  let clear=document.querySelector("#clear");
+  clear.addEventListener("click",function()
+  {
+     screen.textCont="";
+     num1=null;
+     num2=null;
+     operator=null;
+  })
+  
+}
 
 function update_number()
 { 
@@ -93,5 +112,6 @@ function update_number()
       appendEventListenersToOperator(screenGlobal,operator_array);
        let equal=document.querySelector("#equal");
        appendEventListenersToEqualButton(screenGlobal,equal);
+       appendEventListenersToClear(screenGlobal);
 }
-update_number();
+// update_number();
