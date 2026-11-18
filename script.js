@@ -42,36 +42,25 @@ function operate(number1,operatant,number2)
    return divide(number1,number2);
   }
 }
-function update_number()
-{
-    let screen =document.querySelector(".screen");
-    let whichNumberIsEmpty=new function(value)
-    {
-      if(num1!==null || num1!==undefined)
-      {
-        num2=value;
-      }
-      else
-      {
-        num1=value;
-      }
-    }
-    function append_num(element)
+
+function append_num(screen,element)
     {
       let text=screen.textContent+element.textContent;
           screen.textContent=text;
     }
-   let number_buttons=document.querySelectorAll("#num");
-   let number_array=Array.from(number_buttons);
-    number_array.forEach(function(element,index,array)
+
+function appendEventListenersToNumbers(screen,num_array)
+{
+  num_array.forEach(function(element,index,array)
     {
        element.addEventListener("click",function(){
-         append_num(element);
+         append_num(screen,element);
         });
     });
-     let operators=document.querySelectorAll("#operator");
-     let operator_array=Array.from(operators);
-      operator_array.forEach(function(element,index,array)
+}
+function appendEventListenersToOperator(screen,signs_array)
+{
+    signs_array.forEach(function(element,index,array)
        {
           element.addEventListener("click",function()
           {
@@ -82,13 +71,27 @@ function update_number()
           
          })
        });
-       let equal=document.querySelector("#equal");
-       equal.addEventListener("click",function()
+}
+function appendEventListenersToEqualButton(screen,equal_button)
+{
+   equal_button.addEventListener("click",function()
        {
-          num2=screen.textContent;
+          num2=Number(screen.textContent);
           screen.textContent=operate(num1,operator,num2);
        });
-    
+}
 
+
+function update_number()
+{ 
+  let screenGlobal =document.querySelector(".screen");
+   let number_buttons=document.querySelectorAll("#num");
+   let number_array=Array.from(number_buttons);
+    appendEventListenersToNumbers(screenGlobal,number_array)
+     let operators=document.querySelectorAll("#operator");
+     let operator_array=Array.from(operators);
+      appendEventListenersToOperator(screenGlobal,operator_array);
+       let equal=document.querySelector("#equal");
+       appendEventListenersToEqualButton(screenGlobal,equal);
 }
 update_number();
