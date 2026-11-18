@@ -1,5 +1,6 @@
 // variables
 let num1,operator,num2;
+let cleared=false;
 function add(a,b)
 {
     return a+b;
@@ -42,7 +43,17 @@ function operate(number1,operatant,number2)
    return divide(number1,number2);
   }
 }
-
+function isNumberLongEnough(num)
+{
+    let stringNumber=num+"";
+    let number_array= Array.from(stringNumber);
+    let index=number_array.findIndex((element)=>element==='.' );
+    if(number_array.length-(index)>9)
+    {
+      return Number(Math.ceil(num));
+    }
+    return num;
+}
 function append_num(screen,element)
     {
       let text=screen.textContent+element.textContent;
@@ -53,6 +64,7 @@ function appendEventListenersToNumbers(screen,num_array)
 {
   num_array.forEach(function(element,index,array)
     {
+   
        element.addEventListener("click",function(){
          append_num(screen,element);
         });
@@ -81,22 +93,37 @@ function appendEventListenersToEqualButton(screen,equal_button)
 {
    equal_button.addEventListener("click",function()
        {
-          num2=Number(screen.textContent);
-          screen.textContent=operate(num1,operator,num2);
-          num2=null;
-          num1=null;
-          operator=null;
+           if(cleared||(num1!==null && num2!==null))
+           { 
+
+              num2=Number(screen.textContent);
+            if(num1!==0&&num2===0)
+            {
+              screen.textContent="MATH ERRRRRRROR!"
+            }
+            else
+            {
+             let ans=operate(num1,operator,num2);
+             screen.textContent=isNumberLongEnough(ans);
+             num2=null;
+             num1=null;
+             operator=null;
+             cleared=true;
+            }
+         
+           }
+         
        });
 }
-function appendEventListenersToClear(screen)
+function appendEventListenersToClear(screen,clear)
 {
-  let clear=document.querySelector("#clear");
   clear.addEventListener("click",function()
   {
-     screen.textCont="";
      num1=null;
      num2=null;
      operator=null;
+     screen.textContent="";
+
   })
   
 }
@@ -112,6 +139,7 @@ function update_number()
       appendEventListenersToOperator(screenGlobal,operator_array);
        let equal=document.querySelector("#equal");
        appendEventListenersToEqualButton(screenGlobal,equal);
-       appendEventListenersToClear(screenGlobal);
+        let clear_btn=document.querySelector("#clear");
+       appendEventListenersToClear(screenGlobal,clear_btn);
 }
 // update_number();
